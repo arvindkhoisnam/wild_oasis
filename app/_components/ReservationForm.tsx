@@ -38,7 +38,7 @@ function ReservationForm({
         <p>Logged in as</p>
 
         <div className="flex gap-4 items-center">
-          <Image
+          <img
             referrerPolicy="no-referrer"
             className="h-8 rounded-full"
             src={user.image!}
