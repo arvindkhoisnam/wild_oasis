@@ -4,6 +4,7 @@ import { CabinType } from "./Rerservations";
 import { useReservation } from "./ReservationContext";
 import { createBooking } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
+import Image from "next/image";
 
 function ReservationForm({
   cabin,
@@ -37,7 +38,7 @@ function ReservationForm({
         <p>Logged in as</p>
 
         <div className="flex gap-4 items-center">
-          <img
+          <Image
             referrerPolicy="no-referrer"
             className="h-8 rounded-full"
             src={user.image!}

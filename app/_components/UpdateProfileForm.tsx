@@ -1,14 +1,21 @@
+import Image from "next/image";
 import { updateGuest } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
 
+type GuestType = {
+  fullName: string;
+  email: string;
+  nationalID: string;
+  countryFlag: string;
+};
 function UpdateProfileForm({
   children,
   guest,
 }: {
   children: React.ReactNode;
-  guest: any;
+  guest: GuestType;
 }) {
-  const { fullName, email, nationality, nationalID, countryFlag } = guest;
+  const { fullName, email, nationalID, countryFlag } = guest;
   return (
     <form
       className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
@@ -37,10 +44,12 @@ function UpdateProfileForm({
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <label htmlFor="nationality">Where are you from?</label>
-          <img
+          <Image
+            width={20}
+            height={20}
             src={countryFlag}
             alt="Country flag"
-            className="h-5 rounded-sm"
+            className="rounded-sm"
           />
         </div>
         {children}

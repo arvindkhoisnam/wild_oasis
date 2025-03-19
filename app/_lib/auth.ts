@@ -13,6 +13,7 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 }
+
 const authConfig = {
   providers: [
     Google({
@@ -21,7 +22,8 @@ const authConfig = {
     }),
   ],
   callbacks: {
-    authorized({ auth, request }: { auth: any; request: NextRequest }) {
+    authorized({ auth }: { auth: Session | null }) {
+      console.log(auth);
       return !!auth?.user;
     },
     async signIn({ user }: { user: User }) {
@@ -32,6 +34,7 @@ const authConfig = {
         }
         return true;
       } catch (err) {
+        console.error(err);
         return false;
       }
     },

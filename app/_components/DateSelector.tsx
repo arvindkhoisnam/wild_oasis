@@ -51,7 +51,7 @@ function DateSelector({
         mode="range"
         min={minBookingLength + 1}
         max={maxBookingLength}
-        //@ts-ignore
+        //@ts-expect-error
         onSelect={setRange}
         selected={displayRange}
         hidden={{ before: new Date() }}

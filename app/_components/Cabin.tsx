@@ -30,7 +30,7 @@ function Cabin({
         </h3>
 
         <p className="text-lg text-primary-300 mb-10">
-          <TextExpander children={description} />
+          <TextExpander description={description} />
         </p>
 
         <ul className="flex flex-col gap-4 mb-7">

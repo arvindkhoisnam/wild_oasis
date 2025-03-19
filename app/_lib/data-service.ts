@@ -48,11 +48,15 @@ export async function getGuest(email: string) {
     .select("*")
     .eq("email", email)
     .single();
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not get loaded");
+  }
   return data;
 }
 
 export async function getBooking(id: string) {
-  const { data, error, count } = await supabase
+  const { data, error } = await supabase
     .from("bookings")
     .select("*")
     .eq("id", id)
@@ -65,7 +69,7 @@ export async function getBooking(id: string) {
 }
 
 export async function getBookings(guestId: string) {
-  const { data, error, count } = await supabase
+  const { data, error } = await supabase
     .from("bookings")
     .select(
       "id, created_at, startDate, endDate, numNights, numGuests, totalPrice, guestId, cabinId, cabins(name, image)"
@@ -80,7 +84,7 @@ export async function getBookings(guestId: string) {
 }
 
 export async function getBookedDatesByCabinId(cabinId: string) {
-  let today = new Date();
+  const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
   const temp = today.toISOString();
   const { data, error } = await supabase

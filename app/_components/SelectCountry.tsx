@@ -13,8 +13,10 @@ async function SelectCountry({
 }) {
   const countries = await getCountries();
   const flag =
-    countries.find((country: any) => country.name === defaultCountry)?.flag ??
-    "";
+    countries.find(
+      (country: { name: string; flag: string; independent: boolean }) =>
+        country.name === defaultCountry
+    )?.flag ?? "";
 
   return (
     <select

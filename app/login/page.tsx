@@ -1,5 +1,4 @@
 import SignInButton from "@/app/_components/SignInButton";
-import { title } from "process";
 
 export const metadata = {
   title: "Login",

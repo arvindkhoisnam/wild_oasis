@@ -17,6 +17,7 @@ export async function GET(
     ]);
     return Response.json({ cabin, bookedDates });
   } catch (err) {
+    console.error(err);
     return Response.json({ data: "Cabin not found" });
   }
 }
