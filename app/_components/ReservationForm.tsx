@@ -4,7 +4,6 @@ import { CabinType } from "./Rerservations";
 import { useReservation } from "./ReservationContext";
 import { createBooking } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
-import Image from "next/image";
 
 function ReservationForm({
   cabin,
