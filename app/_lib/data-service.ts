@@ -128,3 +128,17 @@ export async function getCountries() {
     throw new Error("Could not fetch countries");
   }
 }
+
+export async function createGuest(newGuest: {
+  email: string;
+  fullName: string;
+}) {
+  const { data, error } = await supabase.from("guests").insert([newGuest]);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Guest could not be created");
+  }
+
+  return data;
+}

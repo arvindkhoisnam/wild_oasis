@@ -11,7 +11,7 @@ export async function updateGuest(formData: any): Promise<void> {
     throw new Error("You must be signed in.");
   }
   const nationalID = formData.get("nationalID");
-  const [nationality, countryFlag] = formData.get("nationality")?.split("%");
+  const [nationality, countryFlag] = formData.get("nationality").split("%");
 
   if (!/^[a-zA-Z0-9]{6,12}$/.test(nationalID)) {
     throw new Error("Please provide a valid national ID");
@@ -20,7 +20,7 @@ export async function updateGuest(formData: any): Promise<void> {
   const { error } = await supabase
     .from("guests")
     .update(updatedData)
-    .eq("id", session?.user?.guestId);
+    .eq("id", session!.user.guestId);
   if (error) {
     throw new Error("Guest could not be updated");
   }
@@ -32,7 +32,7 @@ export async function deleteBooking(bookingId: string) {
   if (!session) {
     throw new Error("You must be signed in.");
   }
-  const guestBookings = await getBookings(session?.user?.guestId!);
+  const guestBookings = await getBookings(session!.user.guestId!);
   const guestBookingIds = guestBookings.map((bookings) => bookings.id);
   if (!guestBookingIds.includes(bookingId)) {
     throw new Error("Unauthorized");
@@ -57,7 +57,7 @@ export async function updateBooking(formData: any): Promise<void> {
   if (!session) {
     throw new Error("You must be signed in.");
   }
-  const guestBookings = await getBookings(session?.user?.guestId!);
+  const guestBookings = await getBookings(session!.user.guestId!);
   const guestBookingIds = guestBookings.map((bookings) => bookings.id);
   if (!guestBookingIds.includes(Number(bookingId))) {
     throw new Error("Unauthorized");
@@ -84,7 +84,7 @@ export async function createBooking(
   }
   const newBooking = {
     ...bookingData,
-    guestId: session?.user?.guestId,
+    guestId: session!.user.guestId,
     numGuests: Number(formData.get("numGuests")),
     observations: formData.get("observations").slice(0, 1000),
     extrasPrice: 0,
