@@ -23,6 +23,7 @@ export default async function Page() {
       ) : (
         <ul className="space-y-6">
           {bookings.map((booking) => (
+            //@ts-ignore
             <ReservationCard booking={booking} key={booking.id} />
           ))}
         </ul>

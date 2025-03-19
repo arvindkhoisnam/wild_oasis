@@ -11,6 +11,7 @@ export async function updateGuest(formData: FormData): Promise<void> {
     throw new Error("You must be signed in.");
   }
   const nationalID = formData.get("nationalID");
+
   const data = formData.get("nationality")! as string;
   const [nationality, countryFlag] = data.split("%");
 

@@ -14,7 +14,7 @@ async function SelectCountry({
   const countries = await getCountries();
   const flag =
     countries.find(
-      (country: { name: string; flag: string; independent: boolean }) =>
+      (country: { name: string; flag: string }) =>
         country.name === defaultCountry
     )?.flag ?? "";
 
@@ -26,7 +26,7 @@ async function SelectCountry({
       className={className}
     >
       <option value="">Select country...</option>
-      {countries.map((c: any) => (
+      {countries.map((c: { name: string; flag: string }) => (
         <option key={c.name} value={`${c.name}%${c.flag}`}>
           {c.name}
         </option>

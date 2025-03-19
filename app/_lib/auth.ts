@@ -1,6 +1,5 @@
 import NextAuth, { DefaultSession, Session, User } from "next-auth";
 import Google from "next-auth/providers/google";
-import { NextRequest } from "next/server";
 import { createGuest, getGuest } from "./data-service";
 
 declare module "next-auth" {
