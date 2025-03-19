@@ -43,15 +43,12 @@ export const getCabins = async function () {
 };
 
 export async function getGuest(email: string) {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("guests")
     .select("*")
     .eq("email", email)
     .single();
-  if (error) {
-    console.error(error);
-    throw new Error("Booking could not get loaded");
-  }
+
   return data;
 }
 

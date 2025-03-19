@@ -22,7 +22,6 @@ const authConfig = {
   ],
   callbacks: {
     authorized({ auth }: { auth: Session | null }) {
-      console.log(auth);
       return !!auth?.user;
     },
     async signIn({ user }: { user: User }) {
