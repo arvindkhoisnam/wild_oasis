@@ -51,7 +51,7 @@ function DateSelector({
         mode="range"
         min={minBookingLength + 1}
         max={maxBookingLength}
-        //@ts-expect-error
+        // @ts-expect-error: Ignorable error
         onSelect={setRange}
         selected={displayRange}
         hidden={{ before: new Date() }}

@@ -9,6 +9,11 @@ export const formatDistanceFromNow = (dateStr: string) =>
     addSuffix: true,
   }).replace("about ", "");
 
+type CabinType = {
+  name: string;
+  image: string;
+};
+
 type BookingType = {
   id: number;
   created_at: string;
@@ -19,10 +24,7 @@ type BookingType = {
   totalPrice: number;
   guestId: number;
   cabinId: number;
-  cabins: {
-    name: string;
-    image: string;
-  };
+  cabins: CabinType;
 };
 function ReservationCard({ booking }: { booking: BookingType }) {
   const {
