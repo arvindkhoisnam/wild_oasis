@@ -36,13 +36,13 @@ export async function deleteBooking(bookingId: string) {
   }
   const guestBookings = await getBookings(session!.user.guestId!);
   const guestBookingIds = guestBookings.map((bookings) => bookings.id);
-  if (!guestBookingIds.includes(bookingId)) {
+  if (!guestBookingIds.includes(Number(bookingId))) {
     throw new Error("Unauthorized");
   }
   const { error } = await supabase
     .from("bookings")
     .delete()
-    .eq("id", bookingId);
+    .eq("id", Number(bookingId));
   if (error) {
     throw new Error("Booking could not be deleted");
   }
